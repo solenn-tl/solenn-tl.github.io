@@ -25,6 +25,7 @@
   <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
   <link href="css/resume.css" rel="stylesheet">
   <link href="css/extras.css" rel="stylesheet">
+  <link href="css/accordion.css" rel="stylesheet">
 
   <!-- scripts on load -->
   <script src="vendor/d3/d3.min.js"></script>
@@ -173,8 +174,15 @@
     <section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="news">
       <div class="w-100">
         <h2 class="mb-5">News</h2>
-          <h3>2025</h3>
+        <button class="accordion-2"><h3>2025</h3></button>
+        <div class="panel-2">
           <ul>
+            <li>
+              <b class="lang-en">November</b>
+              <b class="lang-fr">November</b>
+              <p class="lang-fr">Présentation lors de la journée thématique du GT RECAST <i><a href="https://gt-recast.github.io/events/2025-11-17">Raisonnement avec des données incertaines & Qualité des données</a></i>. Présentation intitulée <i>Interprétation sémantique de tables historiques : des sources anciennes aux graphes de connaissances</i>.</p>
+              <p class="lang-en">Attending at the thematic day <i><a href="https://gt-recast.github.io/events/2025-11-17">Reasoning with uncertain data & Data quality</a></i> organised by the GT RECAST (GdR MADICS and RADIA) to present the following work <i>Semantic Interpretation of Historical Tables : from historical sources to knowledge graphs.</i>.</p>
+            </li>
             <li>
               <b class="lang-en">September</b>
               <b class="lang-fr">Septembre</b>
@@ -202,7 +210,9 @@
               <br/>21/03 - Presentation at the <i>Detection of change in geospatial data</i> thematic day organised by the GDR IASIS entitled <i>PeGazUs: An approach based on knowledge graphs to build perpetual urban gazetiers</i> with Charly Bernard</p>
             </li>
           </ul>
-          <h3>2024</h3>
+          </div>
+          <button class="accordion-2"><h3>2024</h3></button>
+          <div class="panel-2">
           <ul>
             <li>
               <b class="lang-en">May</b>
@@ -239,7 +249,9 @@
                 build urban perpetual gazetteers</a> written with Charly Bernard, Nathalie Abadie, Bertrand Duménieu, Joseph Chazalon et Julien Perret at EKAW 2024 in Amsterdam (26-28 of November 2024).</p>
             </li>
           </ul>
-          <h3>2023</h3>
+        </div>
+        <button class="accordion-2"><h3>2023</h3></button>
+        <div class="panel-2">
           <ul>
             <li>
               <b class="lang-en">March</b>
@@ -272,7 +284,9 @@
               <p class="lang-en">Invited presentation at the seminar <a href="https://www.msh-vdl.fr/actualite/seminaire-lintelligence-artificielle-dans-le-traitement-dimages-numeriques-en-shs/"><i>Artificial intelligence in digital image processing in the social sciences and humanities</i></a> organised by the MSH Val de Loire and the Criham (Poitier University).</p>
             </li>
           </ul>
-          <h3>2022</h3>
+        </div>
+        <button class="accordion-2"><h3>2022</h3></button>
+        <div class="panel-2">
           <ul>
             <li>
               <b class="lang-en">November</b>
@@ -283,6 +297,7 @@
                 <br/>17/11 - Présentation invitée lors du wébinaire de l'AR Graphes de connaissances géohistoriques (GDR MAGIS): <a href ="https://gcgh-magis.github.io/webinaire-s%C3%A9ance-2"></a><i>Identification automatique et analyse de relations spatio-temporelles dans des séries de données extraites d’annuaires du commerce parisien du XIXème siècle: application aux photographes</i></a></p>
             </li>
           </ul>
+        </div>
         </div>
       </section>
   
@@ -574,6 +589,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
   <!-- Custom scripts for this template -->
   <script src="js/resume.js"></script>
+  <script src="js/accordion.js"></script>
 
 </body>
 
