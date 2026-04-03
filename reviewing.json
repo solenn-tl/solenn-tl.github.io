@@ -5,6 +5,6 @@
  ],
  "conferences": [
      {"name": "ICDAR", "role": "Reviewer", "year": 2023, "type": "CREW", "description": "17th International Conference on Document Analysis and Recognition", "url": "https://icdar2023.org/"},
-     {"name": "ESWC", "role": "Reviewer", "year": 2026, "type": "CREW", "description": "23rd European Semantic Web Conference (ESWC)", "url": "https://2026.eswc-conferences.org/"}
- ]
+     {"name": "ESWC", "role": "Reviewer", "year": 2026, "type": "CREW", "description": "23rd European Semantic Web Conference", "url": "https://2026.eswc-conferences.org/"},
+     {"name":"APIA", "role": "Reviewer", "year": 2026, "type": "CREW", "description": "Conférence Nationale sur les Applications Pratiques de l’Intelligence Artificielle", "url": "https://pfia26.cril.fr/conf%C3%A9rences/apia/"} ]
 }
