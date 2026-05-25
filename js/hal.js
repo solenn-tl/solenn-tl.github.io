@@ -128,6 +128,7 @@ var getPublicationByHalId = function(recordId, parent){
   request.send();
 }
 
+
 var getKeywordPublicationsAuthor = function(halId, keyword, parent){
   parent = document.getElementById(parent || "pub") || parent;
   getPublications(halId, parent, "&fq=keyword_s:\""+keyword+"\"");
@@ -275,5 +276,90 @@ var createPub = function(doc, parent){
   linksElement.insertBefore(createBibtex(doc.label_bibtex), linksElement.firstChild);
   listElement.insertBefore(linksElement, listElement.firstChild);
   parent.appendChild(listElement);
+  // set year attribute for sorting
+  try { listElement.setAttribute('data-year', doc.producedDateY_i || 0); } catch(e){}
   jQuery('lang-en').hide();
+  return listElement;
 }
+
+// helpers to place additional papers into existing lists
+function sectionIdForClassement(code) {
+  const map = {
+    'PV':'pubPV','ASCL':'pubASCL','ACL':'pubACL','ACLN':'pubACLN',
+    'INV':'pubINV','COM':'pubCOM','ACTI':'pubACTI','ACTN':'pubACTN',
+    'OS':'pubOS','DO':'pubDO','AP':'pubAP','TH':'pubTH','AFF':'pubAFF'
+  };
+  return map[code] || 'pub';
+}
+
+function insertLiSorted(ol, li) {
+  if (!ol) return ol.appendChild(li);
+  const newYear = parseInt(li.getAttribute('data-year') || '0', 10);
+  const children = Array.from(ol.children);
+  for (let i = 0; i < children.length; i++) {
+    const cy = parseInt(children[i].getAttribute('data-year') || '0', 10);
+    if (newYear > cy) { ol.insertBefore(li, children[i]); return; }
+  }
+  ol.appendChild(li);
+}
+
+function loadAdditionalPapersFromFile(path) {
+  var req = new XMLHttpRequest();
+  req.open('GET', path, true);
+  req.onload = function() {
+    try {
+      const list = JSON.parse(this.responseText || '[]');
+      if (!Array.isArray(list)) return;
+      list.forEach(entry => {
+        const rawId = entry.idHal || entry.hal || entry.id || entry.idHal;
+        if (!rawId) return;
+        const normalizedId = (''+rawId).replace(/(hal-\d+)(v\d+)?$/i, '$1');
+        var r = new XMLHttpRequest();
+        r.open('GET', halRecordApi(normalizedId), true);
+        r.onload = function() {
+          try {
+            const docs = JSON.parse(this.response).response.docs || [];
+            docs.forEach(doc => {
+              const code = classement(doc);
+              // prefer explicit section from the JSON entry if provided
+              const forcedSection = (entry.section || entry.target || entry.sectionId);
+              const sectionId = forcedSection || sectionIdForClassement(code);
+              let section = document.getElementById(sectionId);
+              if (!section) {
+                console.warn('Target section not found for', sectionId, 'falling back to classement');
+                const fallbackId = sectionIdForClassement(code);
+                if (fallbackId === sectionId) return; // nothing we can do
+                if (!(document.getElementById(fallbackId))) return;
+                section = document.getElementById(fallbackId);
+              }
+              // skip if already present
+              if (section.querySelector('#' + doc.halId_s)) return;
+              // get or create target ol
+              let mainOl = section.querySelector('ol.sub');
+              const tmp = document.createElement('div');
+              const li = createPub(doc, tmp);
+              if (!li) return;
+              if (!mainOl) {
+                mainOl = document.createElement('ol'); mainOl.setAttribute('class','sub');
+                insertLiSorted(mainOl, li);
+                section.appendChild(mainOl);
+                // observe and merge if original lists appear later (existing logic may handle this)
+              } else {
+                insertLiSorted(mainOl, li);
+              }
+            });
+          } catch(e) { console.error('Error parsing HAL record response', e); }
+        };
+        r.onerror = function(){ console.error('Network error loading HAL record', normalizedId); };
+        r.send();
+      });
+    } catch(e) { console.error('Error parsing additional papers file', e); }
+  };
+  req.onerror = function(){ console.error('Could not load additional papers file', path); };
+  req.send();
+}
+
+// Load configured additional papers after full page load
+window.addEventListener('load', function(){
+  setTimeout(function(){ loadAdditionalPapersFromFile('additional-papers.json'); }, 200);
+});
