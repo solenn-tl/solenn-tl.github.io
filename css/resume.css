@@ -176,16 +176,19 @@ section.resume-section .resume-item .resume-date {
 }
 
 .bg-primary {
-  background-color: #94c01a !important;
+  /*background-color: #94c01a !important;*/
+  background-color: #ec5a64 !important;
 }
 
 .text-primary {
   /*color: #BD5D38 !important;*/
-  color: #94c01a !important;
+  /*color: #94c01a !important;*/
+  color: #ec5a64 !important;
 }
 
 a {
-  color: #94c01a;
+  /*color: #94c01a;*/
+  color: #ec5a64;
 }
 
 a:hover, a:focus, a:active {
