@@ -27,6 +27,11 @@ var halApi = function(halId){
   return "https://api.archives-ouvertes.fr/search/?q=authIdHal_s:%22"+halId+"%22&wt=json&sort=producedDateY_i desc&rows=10000&fl="+fl;
 }
 
+var halRecordApi = function(recordId){
+  const fl = 'fileAnnexesFigure_s,invitedCommunication_s,proceedings_s,popularLevel_s,halId_s,authIdHalFullName_fs,producedDateY_i,docType_s,files_s,fileMain_s,fileMainAnnex_s,linkExtUrl_s,title_s,en_title_s,fr_title_s,label_bibtex,citationRef_s';
+  return "https://api.archives-ouvertes.fr/search/?q=halId_s:%22"+recordId+"%22&wt=json&sort=producedDateY_i desc&rows=10000&fl="+fl;
+}
+
 var getPublications = function(halId, parent, params){
   if (!parent) return;
 
@@ -43,6 +48,7 @@ var getPublications = function(halId, parent, params){
     if(docs.length == 0) {
       parent.hidden = true;
     } else {
+      parent.hidden = false;
       const ol = document.createElement('ol');
       ol.setAttribute("class","sub");
       docs.forEach(doc => createPub(doc, ol));
@@ -96,8 +102,30 @@ function classement(doc)
 
 var getPublicationsAuthor = function(halId, options = publication_options)
 {
-  for (var id in options)
+  for (var id in options) {
+    if (id == 'pubTH') continue;
     getPublications(halId, document.getElementById(id), options[id]);
+  }
+}
+
+var getPublicationByHalId = function(recordId, parent){
+  if (!parent) return;
+  var request = new XMLHttpRequest();
+  var url = halRecordApi(recordId);
+  request.open('GET', url, true);
+  request.onload = function () {
+    var docs = JSON.parse(this.response).response.docs;
+    if(docs.length == 0) {
+      parent.hidden = true;
+    } else {
+      parent.hidden = false;
+      const ol = document.createElement('ol');
+      ol.setAttribute("class","sub");
+      docs.forEach(doc => createPub(doc, ol));
+      parent.appendChild(ol);
+    }
+  };
+  request.send();
 }
 
 var getKeywordPublicationsAuthor = function(halId, keyword, parent){
@@ -134,7 +162,9 @@ function parseCitation(doc, citationElement, linksElement)
     citation = citation.replace(matches[0],'');
     var icons = {
       'dx.doi.org': 'doi.svg',
-      'www.mdpi.com': 'mdpi.jpg'
+      'www.mdpi.com': 'mdpi.jpg',
+      'www.theses.fr': 'theses.png',
+      'theses.fr': 'theses.png'
     }
     const img = "img/icons/"+(icons[host] || "link.svg")
 
