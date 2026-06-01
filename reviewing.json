@@ -1,7 +1,8 @@
 {
 "journals": [
    {"name": "MTAP", "role": "Reviewer", "year": 2024, "type": "JREW1", "description": "Multimedia Tools and Applications", "url": "https://link-springer-com/journal/11042"},
-   {"name": "DSH", "role": "Reviewer", "year": 2023, "type": "JREW1", "description": "Digital Scholarship in the Humanities", "url": "https://academic.oup.com/dsh"}
+   {"name": "DSH", "role": "Reviewer", "year": 2023, "type": "JREW1", "description": "Digital Scholarship in the Humanities", "url": "https://academic.oup.com/dsh"},
+   {"name": "JOHD", "role": "Reviewer", "year": 2026, "type": "JREW1", "description": "Journal of Open Humanities Data", "url": "https://openhumanitiesdata.metajnl.com/"}
  ],
  "conferences": [
      {"name": "ICDAR", "role": "Reviewer", "year": 2023, "type": "CREW", "description": "17th International Conference on Document Analysis and Recognition", "url": "https://icdar2023.org/"},
