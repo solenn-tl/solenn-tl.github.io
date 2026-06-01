@@ -22,7 +22,7 @@
 
 const CVIS = {
   BOOK_LIST: ["Books"],
-  JOUR_LIST: ["MTAP","DSH"],
+  JOUR_LIST: ["MTAP","DSH","JOHD"],
   CONF_LIST: ["ICDAR","ESWC","APIA"],
   TIME_INTERVAL: ["2020", "2030"],
   SVG_W: 800,
