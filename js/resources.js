@@ -29,6 +29,16 @@ The html section looks like this
  * @param {Function} formatText - Function that takes an item and returns the link text.
  * @param {string} [urlKey='url'] - The property name containing the link URL.
  */
+
+function stringToColor(str) {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+        hash = str.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    const hue = Math.abs(hash) % 360;
+    return `hsl(${hue}, 65%, 85%)`; // Light pastel colors for high contrast text
+}
+
 function renderLinkList(target, items, formatText, urlKey = 'url') {
     const container = typeof target === 'string' 
         ? document.getElementById(target) 
@@ -51,23 +61,44 @@ function renderLinkList(target, items, formatText, urlKey = 'url') {
         return;
     }
 
+    // Sort items by lastversiondate in descending order
+    items.sort((a, b) => new Date(b.lastversiondate) - new Date(a.lastversiondate));
+
     items.forEach(item => {
         const listItem = document.createElement('li');
-        const link = document.createElement('a');
+        
+        // Render project chip tags if they exist
+        const projects = Array.isArray(item.project) 
+            ? item.project 
+            : (item.project ? [item.project] : []);
 
+        projects.forEach(projectName => {
+            const chip = document.createElement('span');
+            chip.textContent = projectName;
+            
+            // Inline styling for the chip
+            chip.style.backgroundColor = stringToColor(projectName);
+            chip.style.color = '#1a1a1a';
+            chip.style.padding = '2px 8px';
+            chip.style.borderRadius = '12px';
+            chip.style.fontSize = '0.8em';
+            chip.style.marginRight = '6px';
+            chip.style.display = 'inline-block';
+
+            listItem.appendChild(chip);
+        });
+
+        const link = document.createElement('a');
         link.href = item[urlKey] || '#';
         link.textContent = item.name;
         link.target = '_blank';
-        link.rel = 'noopener noreferrer'; // Recommended security best practice for target="_blank"
+        link.rel = 'noopener noreferrer';
 
-        const additionalText = document.createTextNode(', ' + item.lastversionid + ' (' + item.lastversiondate + ')');
+        const additionalText = document.createTextNode(', v.' + item.lastversionid + ' (' + item.lastversiondate + ')');
         if (item.doi) {
             additionalText.textContent += ', ' + item.doi;
-        } else if (item.url) {
-            additionalText.textContent += ', ' + item.url;
         }
 
-        // Append the link first, then append the plain text node next to it
         listItem.appendChild(link);
         listItem.appendChild(additionalText);
 
