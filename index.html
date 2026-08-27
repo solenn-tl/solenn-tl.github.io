@@ -504,12 +504,28 @@
     <section class="p-3 p-lg-5 d-flex align-items-center" id="resources">
       <div class="w-100">
         <h2 class="mb-5">Resources</h2>
+          <p class="lang-en">This is a list of resources : ontologies, datasets, software, models, and metadata files.</p>
+          <p class="lang-fr">Liste de ressources associées aux travaux publiés: ontologies, jeux de données, logiciels, modèles et fichiers de métadonnées.</p>
+
           <!--Ontologies-->
-          <span id="resOnto"><div class="subheading mb-3 mt-3 lang-en">Ontologies</div><div class="subheading mb-3 mt-3 lang-fr">Ontologies</div></span>
+          <button class="accordion-2"><h4 class="lang-en">Ontologies</h4><h4 class="lang-fr">Ontologies</h4></button>
+          <div class="panel-2"><span id="ontologies"></span></div>
+
           <!--Datasets and deep learning models (Zenodo)-->
-          <span id="resDatasets"><div class="subheading mb-3 mt-3 lang-en">Datasets and Models</div><div class="subheading mb-3 mt-3 lang-fr">Jeux de données et réseaux de neurones entraînés</div></span>
+          <button class="accordion-2"><h4 class="lang-en">Datasets</h4><h4 class="lang-fr">Jeux de données</h4></button>
+          <div class="panel-2"><span id="datasets"></span></div>
+
+          <!-- Codes and sofwares -->
+          <button class="accordion-2"><h4 class="lang-en">Codes and softwares</h4><h4 class="lang-fr">Codes et logiciels</h4></button>
+          <div class="panel-2"><span id="softwares"></span></div>
+
+          <!-- Models (Zenodo)-->
+           <button class="accordion-2"><h4 class="lang-en">Models</h4><h4 class="lang-fr">Modèles / réseaux de neurones entraînés</h4></button>
+          <div class="panel-2"><span id="models"></span></div>
+
           <!--Metadata files (Nakala)-->
-          <span id="resMetadata"><div class="subheading mb-3 mt-3 lang-en">Metadata files</div><div class="subheading mb-3 mt-3 lang-fr">Métadonnées</div></span>
+          <button class="accordion-2"><h4 class="lang-en">Metadata files</h4><h4 class="lang-fr">Métadonnées</h4></button>
+          <div class="panel-2"><span id="metadata"></span></div>
       </div>
     </section>
 
@@ -674,7 +690,7 @@
   <!-- Custom scripts for this template -->
   <script src="js/resume.js"></script>
   <script src="js/accordion.js"></script>
-
+  <script src="js/resources.js"></script>
 </body>
 
 </html>
