@@ -245,5 +245,70 @@
         "url":"https://zenodo.org/records/14392548",
         "doi":"10.5281/zenodo.14392548",
         "project":["PhD Thesis", "MAPTEXT competition"]
+    },
+    {
+        "name":"IGN Train and Validation Data for ICDAR'24 MapText Competition",
+        "authors":"",
+        "contributors":"",
+        "type":"dataset",
+        "description":"",
+        "lastversiondate":"2024-04-17",
+        "lastversionid":"1.1",
+        "initialversiondate":"2024-02-02",
+        "url":"https://zenodo.org/records/10987299",
+        "doi":"10.5281/zenodo.10987299",
+        "project":["PhD Thesis", "MAPTEXT competition"]
+    },
+    {
+        "name":"IGN Test Data for ICDAR'24 MapText Competition",
+        "authors":"",
+        "contributors":"",
+        "type":"dataset",
+        "description":"",
+        "lastversiondate":"2024-03-01",
+        "lastversionid":"1.0",
+        "initialversiondate":"2024-02-02",
+        "url":"https://zenodo.org/records/10732281",
+        "doi":"10.5281/zenodo.10732281",
+        "project":["PhD Thesis", "MAPTEXT competition"]
+    },
+    {
+        "name":"PeGazUs knowledge graph population algorithm (land registry version)",
+        "authors":"",
+        "contributors":"",
+        "type":"software",
+        "description":"",
+        "lastversiondate":"2024",
+        "lastversionid":"1.0",
+        "initialversiondate":"2024",
+        "url":"https://github.com/umrlastig/pegazus-ontology",
+        "doi":"",
+        "project":"PhD Thesis"
+    },
+    {
+        "name":"An end-to-end pipeline for knowledge graph population from 19th-century land registry digitised tables",
+        "authors":"",
+        "contributors":"",
+        "type":"software",
+        "description":"",
+        "lastversiondate":"2025-09",
+        "lastversionid":"1.0",
+        "initialversiondate":"2025-09",
+        "url":"https://github.com/solenn-tl/land_registry_tables_processing_TPDL_2025",
+        "doi":"",
+        "project":"PhD Thesis"
+    },
+    {
+        "name":"Benchmark of Nested NER Approaches in Historical Structured Documents",
+        "authors":"",
+        "contributors":"",
+        "type":"software",
+        "description":"",
+        "lastversiondate":"2023-08",
+        "lastversionid":"1.0",
+        "initialversiondate":"2023-08",
+        "url":"https://github.com/soduco/paper-nestedner-icdar23-code",
+        "doi":"",
+        "project":"ANR SODUCO"
     }
 ]
