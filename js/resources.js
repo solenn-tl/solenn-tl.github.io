@@ -115,6 +115,7 @@ fetch('./resources.json')
         //Filter
         data.ontologies = data.filter(item => item.type === 'ontology');
         data.datasets = data.filter(item => item.type === 'dataset');
+        data.websites = data.filter(item => item.type === 'website');
         data.softwares = data.filter(item => item.type === 'software');
         data.models = data.filter(item => item.type === 'model');
         data.metadata = data.filter(item => item.type === 'metadata');
@@ -129,6 +130,12 @@ fetch('./resources.json')
         renderLinkList(
             'datasets', 
             data.datasets
+        );
+
+        // Softwares population
+        renderLinkList(
+            'websites', 
+            data.websites
         );
 
         // Softwares population

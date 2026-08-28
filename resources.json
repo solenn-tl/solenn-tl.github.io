@@ -310,5 +310,31 @@
         "url":"https://github.com/soduco/paper-nestedner-icdar23-code",
         "doi":"",
         "project":"ANR SODUCO"
+    },
+    {
+        "name":"Atelier de création de graphes de connaissances géohistoriques",
+        "authors":"",
+        "contributors":"",
+        "type":"software",
+        "description":"",
+        "lastversiondate":"2023-11-20",
+        "lastversionid":"1.0",
+        "initialversiondate":"2023-11-20",
+        "url":"https://github.com/soduco/atelier_graphes_geohistoriques_annuaires",
+        "doi":"",
+        "project":"ANR SODUCO"
+    },
+    {
+        "name":"Visualisation des graphes géohistoriques construits à partir des entrées d'annuaires du commerce de Paris (XIXème siècle)",
+        "authors":"",
+        "contributors":"",
+        "type":"website",
+        "description":"",
+        "lastversiondate":"2023-11-20",
+        "lastversionid":"3.0",
+        "initialversiondate":"",
+        "url":"https://soduco.geohistoricaldata.org/atelier_graphes_geohistoriques_annuaires/",
+        "doi":"",
+        "project":"ANR SODUCO"
     }
 ]
